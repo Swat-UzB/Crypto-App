@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="coinPriceInfo"
+            type="com.swat_uzb.cryptoapp.pojo.CoinPriceInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.DetailFragment">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_view_logo_coin"
+            android:layout_width="@dimen/dimen_80"
+            android:layout_height="@dimen/dimen_80"
+            android:layout_margin="@dimen/dimen_16"
+            android:contentDescription="@string/desc_coin_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_symbols"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:text='@{coinPriceInfo.fromsymbol+"/"+coinPriceInfo.tosymbol}'
+            android:textSize="@dimen/text_36"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_logo_coin"
+            tools:text="BTC/USD" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_symbols"
+            app:layout_constraintVertical_bias=".1">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_price"
+                style="@style/text_style"
+                android:text='@{"Price: "+coinPriceInfo.price.toString()}'
+                tools:text="Price: 7000.5" />
+
+            <View style="@style/interval_style" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_min_in_day"
+                style="@style/text_style"
+                android:text='@{"Low in a day: "+coinPriceInfo.lowday.toString()}'
+                tools:text="Low in a day:  7000.5" />
+
+            <View style="@style/interval_style" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_max_in_day"
+                style="@style/text_style"
+                android:text='@{"Max in a day:  "+coinPriceInfo.highday}'
+                tools:text="Max in a day:  7000.5" />
+
+            <View style="@style/interval_style" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_last_market"
+                style="@style/text_style"
+                android:text='@{"Last Market:  "+coinPriceInfo.lastmarket}'
+                tools:text="Last Market:  7000.5" />
+
+            <View style="@style/interval_style" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_last_update"
+                style="@style/text_style"
+                android:text='@{"Updated:  " + coinPriceInfo.getFormattedTime()}'
+                tools:text="Updated:  12:25:25" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
